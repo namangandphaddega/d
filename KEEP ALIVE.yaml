@@ -1,0 +1,22 @@
+name: Keep Environment Running
+
+on:
+  schedule:
+    # This cron expression runs every 30 minutes
+    - cron: '*/30 * * * *'
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest  # You can also use other available runners like 'ubuntu-22.04'
+
+    steps:
+      # Step 1: Checkout the repository to use any files, if needed.
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      # Step 2: Run a simple keep-alive task. You can modify this with any relevant commands for your environment.
+      - name: Run Keep Alive Script
+        run: |
+          echo "Running some task to keep environment active."
+          # Optional: You can add more meaningful tasks to keep the workflow running
+          sleep 10 # Sleep for 10 seconds to simulate activity
